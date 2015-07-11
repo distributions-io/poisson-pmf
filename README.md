@@ -1,13 +1,13 @@
-Probability Density Function
+Probability Mass Function
 ===
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependencies][dependencies-image]][dependencies-url]
 
-> [Poisson](https://en.wikipedia.org/wiki/Poisson_distribution) distribution probability density function (PDF).
+> [Poisson](https://en.wikipedia.org/wiki/Poisson_distribution) distribution probability mass function (PMF).
 
-The [probability density function](https://en.wikipedia.org/wiki/Probability_density_function) (PDF) for a [Poisson](https://en.wikipedia.org/wiki/Poisson_distribution) random variable is
+The [probability mass function](https://en.wikipedia.org/wiki/Probability_mass_function) (PMF) for a [Poisson](https://en.wikipedia.org/wiki/Poisson_distribution) random variable is
 
 <div class="equation" align="center" data-raw-text="" data-equation="eq:pdf_function">
-	<img src="" alt="Probability density function (PDF) for a Poisson distribution.">
+	<img src="" alt="Probability mass function (PMF) for a Poisson distribution.">
 	<br>
 </div>
 
@@ -30,7 +30,7 @@ var pdf = require( 'distributions-poisson-pdf' );
 
 #### pdf( x[, options] )
 
-Evaluates the [probability density function](https://en.wikipedia.org/wiki/Probability_density_function) (PDF) for the [Poisson](https://en.wikipedia.org/wiki/Poisson_distribution) distribution. `x` may be either a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix).
+Evaluates the [probability mass function](https://en.wikipedia.org/wiki/Probability_mass_function) (PMF) for the [Poisson](https://en.wikipedia.org/wiki/Poisson_distribution) distribution. `x` may be either a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix).
 
 ``` javascript
 var matrix = require( 'dstructs-matrix' ),
@@ -45,7 +45,10 @@ out = pdf( 1 );
 out = pdf( -1 );
 // returns 0
 
-x = [ 0, 0.5, 1, 1.5, 2, 2.5 ];
+out = pdf( 0.5 );
+// returns 0
+
+x = [ 0, 1, 2, 3, 4, 5 ];
 out = pdf( x );
 // returns [...]
 
@@ -55,13 +58,13 @@ out = pdf( x );
 
 x = new Int16Array( 6 );
 for ( i = 0; i < 6; i++ ) {
-	x[ i ] = i*0.5;
+	x[ i ] = i;
 }
 mat = matrix( x, [3,2], 'int16' );
 /*
-	[ 0  0.5
-	  1  1.5
-	  2  2.5 ]
+	[ 0  1
+	  2  3
+	  4  5 ]
 */
 
 out = pdf( mat );
@@ -84,7 +87,7 @@ The function accepts the following `options`:
 A [Poisson](https://en.wikipedia.org/wiki/Poisson_distribution) distribution is a function of 1 parameter(s): `lambda`(mean parameter). By default, `lambda` is equal to `1`. To adjust either parameter, set the corresponding option(s).
 
 ``` javascript
-var x = [ 0, 0.5, 1, 1.5, 2, 2.5 ];
+var x = [ 0, 1, 2, 3, 4, 5 ];
 
 var out = pdf( x, {
 	'lambda': 10,
@@ -97,11 +100,11 @@ For non-numeric `arrays`, provide an accessor `function` for accessing `array` v
 ``` javascript
 var data = [
 	[0,0],
-	[1,0.5],
-	[2,1],
-	[3,1.5],
-	[4,2],
-	[5,2.5]
+	[1,1],
+	[2,2],
+	[3,3],
+	[4,4],
+	[5,5]
 ];
 
 function getValue( d, i ) {
@@ -120,11 +123,11 @@ To [deepset](https://github.com/kgryte/utils-deep-set) an object `array`, provid
 ``` javascript
 var data = [
 	{'x':[0,0]},
-	{'x':[1,0.5]},
-	{'x':[2,1]},
-	{'x':[3,1.5]},
-	{'x':[4,2]},
-	{'x':[5,2.5]}
+	{'x':[1,1]},
+	{'x':[2,2]},
+	{'x':[3,3]},
+	{'x':[4,4]},
+	{'x':[5,5]}
 ];
 
 var out = pdf( data, {
@@ -159,7 +162,7 @@ out = pdf( x, {
 // returns Int32Array( [...] )
 
 // Works for plain arrays, as well...
-out = pdf( [0,0.5,1,1.5,2], {
+out = pdf( [0,1,2,3,4], {
 	'dtype': 'uint8'
 });
 // returns Uint8Array( [...] )
@@ -174,7 +177,7 @@ var bool,
 	x,
 	i;
 
-x = [ 0, 0.5, 1, 1.5, 2 ];
+x = [ 0, 1, 2, 3, 4, 5 ];
 
 out = pdf( x, {
 	'copy': false
@@ -186,13 +189,13 @@ bool = ( x === out );
 
 x = new Int16Array( 6 );
 for ( i = 0; i < 6; i++ ) {
-	x[ i ] = i*0.5;
+	x[ i ] = i;
 }
 mat = matrix( x, [3,2], 'int16' );
 /*
-	[ 0  0.5
-	  1  1.5
-	  2  2.5 ]
+	[ 0  1
+	  2  3
+	  4  5 ]
 */
 
 out = pdf( mat, {
