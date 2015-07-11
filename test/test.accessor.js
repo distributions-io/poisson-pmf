@@ -30,8 +30,6 @@ describe( 'accessor pdf', function tests() {
 		var data, actual, expected, i;
 
 		data = [
-			{'x':-3},
-			{'x':-2},
 			{'x':-1},
 			{'x':0},
 			{'x':1},
@@ -43,7 +41,7 @@ describe( 'accessor pdf', function tests() {
 		actual = pdf( actual, data, lambda,getValue );
 
 		expected = [
-
+			0, 0.36787944, 0.36787944, 0.18393972, 0.06131324, 0.01532831
 		];
 
 		for ( i = 0; i < actual.length; i++ ) {

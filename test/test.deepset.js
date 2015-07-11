@@ -30,8 +30,6 @@ describe( 'deepset pdf', function tests() {
 		var data, expected, i;
 
 		data = [
-			{'x':-3},
-			{'x':-2},
 			{'x':-1},
 			{'x':0},
 			{'x':1},
@@ -42,7 +40,11 @@ describe( 'deepset pdf', function tests() {
 		data = pdf( data, lambda, 'x' );
 
 		expected = [
-
+			{'x':0},
+			{'x':0.36787944},
+			{'x':0.36787944},
+			{'x':0.18393972},
+			{'x':0.06131324}
 		];
 
 		for ( i = 0; i < data.length; i++ ) {
@@ -51,8 +53,6 @@ describe( 'deepset pdf', function tests() {
 
 		// Custom separator...
 		data = [
-			{'x':[9,-3]},
-			{'x':[9,-2]},
 			{'x':[9,-1]},
 			{'x':[9,0]},
 			{'x':[9,1]},
@@ -62,7 +62,11 @@ describe( 'deepset pdf', function tests() {
 
 		data = pdf( data, lambda, 'x/1', '/' );
 		expected = [
-
+			{'x':[9,0]},
+			{'x':[9,0.36787944]},
+			{'x':[9,0.36787944]},
+			{'x':[9,0.18393972]},
+			{'x':[9,0.06131324]}
 		];
 
 		for ( i = 0; i < data.length; i++ ) {

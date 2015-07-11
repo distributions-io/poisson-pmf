@@ -27,7 +27,9 @@ describe( 'number pdf', function tests() {
 	});
 
 	it( 'should evaluate the Poisson probability density function', function test() {
-		assert.closeTo( pdf( 2, lambda ),  , 1e-4 );
+		assert.closeTo( pdf( 1, lambda ),0.36787944, 1e-4 );
+		assert.closeTo( pdf( 2, lambda ), 0.18393972, 1e-4 );
+		assert.closeTo( pdf( 3, lambda ),0.06131324, 1e-4 );
 	});
 
 });
