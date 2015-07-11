@@ -7,7 +7,7 @@ Probability Mass Function
 The [probability mass function](https://en.wikipedia.org/wiki/Probability_mass_function) (PMF) for a [Poisson](https://en.wikipedia.org/wiki/Poisson_distribution) random variable is
 
 <div class="equation" align="center" data-raw-text="" data-equation="eq:pdf_function">
-	<img src="" alt="Probability mass function (PMF) for a Poisson distribution.">
+	<img src="https://cdn.rawgit.com/distributions-io/poisson-pdf/11baf7b5bedf71f21dd14c8ff67d0b1c45912234/docs/img/eqn.svg" alt="Probability mass function (PMF) for a Poisson distribution.">
 	<br>
 </div>
 
@@ -40,7 +40,7 @@ var matrix = require( 'dstructs-matrix' ),
 	i;
 
 out = pdf( 1 );
-// returns
+// returns ~0.368
 
 out = pdf( -1 );
 // returns 0
@@ -50,7 +50,7 @@ out = pdf( 0.5 );
 
 x = [ 0, 1, 2, 3, 4, 5 ];
 out = pdf( x );
-// returns [...]
+// returns [ ~0.368, ~0.368, ~0.184, ~0.0613, ~0.0153, ~0.00307 ]
 
 x = new Int8Array( x );
 out = pdf( x );
@@ -69,9 +69,9 @@ mat = matrix( x, [3,2], 'int16' );
 
 out = pdf( mat );
 /*
-	[
-
-	   ]
+	[ ~0.368 ~0.368 
+	  ~0.184 ~0.0613
+	  ~0.0153 ~0.00307 ]
 */
 ```
 
@@ -90,9 +90,9 @@ A [Poisson](https://en.wikipedia.org/wiki/Poisson_distribution) distribution is 
 var x = [ 0, 1, 2, 3, 4, 5 ];
 
 var out = pdf( x, {
-	'lambda': 10,
+	'lambda': 5,
 });
-// returns [...]
+// returns [ ~0.00674, ~0.0337, ~0.0842, ~0.14, ~0.175, ~0.175 ]
 ```
 
 For non-numeric `arrays`, provide an accessor `function` for accessing `array` values.
@@ -114,7 +114,7 @@ function getValue( d, i ) {
 var out = pdf( data, {
 	'accessor': getValue
 });
-// returns [...]
+// returns [ ~0.368, ~0.368, ~0.184, ~0.0613, ~0.0153, ~0.00307 ]
 ```
 
 
@@ -136,12 +136,12 @@ var out = pdf( data, {
 });
 /*
 	[
-		{'x':[0,]},
-		{'x':[1,]},
-		{'x':[2,]},
-		{'x':[3,]},
-		{'x':[4,]},
-		{'x':[5,]}
+		{'x':[0,~0.368]},
+		{'x':[1,~0.368]},
+		{'x':[2,~0.184]},
+		{'x':[3,~0.0613]},
+		{'x':[4,~0.0153]},
+		{'x':[5,~0.00307]}
 	]
 */
 
@@ -157,15 +157,15 @@ var x, out;
 x = new Int8Array( [0,1,2,3,4] );
 
 out = pdf( x, {
-	'dtype': 'int32'
+	'dtype': 'float32'
 });
-// returns Int32Array( [...] )
+// returns Float32Array( [~0.00674,~0.0337,~0.0842,~0.14,~0.175] )
 
 // Works for plain arrays, as well...
 out = pdf( [0,1,2,3,4], {
-	'dtype': 'uint8'
+	'dtype': 'float32'
 });
-// returns Uint8Array( [...] )
+// returns Float32Array( [~0.00674,~0.0337,~0.0842,~0.14,~0.175] )
 ```
 
 By default, the function returns a new data structure. To mutate the input data structure (e.g., when input values can be discarded or when optimizing memory usage), set the `copy` option to `false`.
@@ -182,7 +182,7 @@ x = [ 0, 1, 2, 3, 4, 5 ];
 out = pdf( x, {
 	'copy': false
 });
-// returns [...]
+// returns [ ~0.368, ~0.368, ~0.184, ~0.0613, ~0.0153, ~0.00307 ]
 
 bool = ( x === out );
 // returns true
@@ -202,9 +202,9 @@ out = pdf( mat, {
 	'copy': false
 });
 /*
-	[
-
-	   ]
+	[ ~0.368 ~0.368 
+	  ~0.184 ~0.0613
+	  ~0.0153 ~0.00307 ]
 */
 
 bool = ( mat === out );
