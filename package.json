@@ -1,7 +1,7 @@
 {
   "name": "distributions-poisson-pdf",
   "version": "0.0.0",
-  "description": "Poisson  distribution probability density function (PDF)",
+  "description": "Poisson distribution probability mass function (PMF)",
   "author": {
     "name": "Philipp Burckhardt",
     "email": "pburckhardt@outlook.com"

@@ -13,7 +13,7 @@ var data,
 // Plain arrays...
 data = new Array( 10 );
 for ( i = 0; i < data.length; i++ ) {
-	data[ i ] = i * 0.5;
+	data[ i ] = i;
 }
 out = pdf( data );
 console.log( 'Arrays: %s\n', out );
