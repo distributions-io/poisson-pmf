@@ -6,10 +6,10 @@ Probability Mass Function
 
 The [probability mass function](https://en.wikipedia.org/wiki/Probability_mass_function) (PMF) for a [Poisson](https://en.wikipedia.org/wiki/Poisson_distribution) random variable is
 
-<div class="equation" align="center" data-raw-text="f(x;\lambda)=P(X=x;\lambda)=\begin{cases} \tfrac{\lambda^x}{x!}e^{-\lambda} & \text{ for } x = 0,1,2,\ldots \\
-0 & \text{ otherwise}
+<div class="equation" align="center" data-raw-text="f(x;\lambda)=P(X=x;\lambda)=\begin{cases} \tfrac{\lambda^x}{x!}e^{-\lambda} &amp; \text{ for } x = 0,1,2,\ldots \\
+0 &amp; \text{ otherwise}
 \end{cases}" data-equation="eq:pmf_function">
-	<img src="https://cdn.rawgit.com/distributions-io/poisson-pmf/11baf7b5bedf71f21dd14c8ff67d0b1c45912234/docs/img/eqn.svg" alt="Probability mass function (PMF) for a Poisson distribution.">
+	<img src="https://cdn.rawgit.com/distributions-io/poisson-pmf/a4d9917c1204ad280638a82d61f1c767f112a875/docs/img/eqn.svg" alt="Probability mass function (PMF) for a Poisson distribution.">
 	<br>
 </div>
 
