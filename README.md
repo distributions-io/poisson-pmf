@@ -6,8 +6,10 @@ Probability Mass Function
 
 The [probability mass function](https://en.wikipedia.org/wiki/Probability_mass_function) (PMF) for a [Poisson](https://en.wikipedia.org/wiki/Poisson_distribution) random variable is
 
-<div class="equation" align="center" data-raw-text="" data-equation="eq:pdf_function">
-	<img src="https://cdn.rawgit.com/distributions-io/poisson-pdf/11baf7b5bedf71f21dd14c8ff67d0b1c45912234/docs/img/eqn.svg" alt="Probability mass function (PMF) for a Poisson distribution.">
+<div class="equation" align="center" data-raw-text="f(x;\lambda)=P(X=x;\lambda)=\begin{cases} \tfrac{\lambda^x}{x!}e^{-\lambda} & \text{ for } x = 0,1,2,\ldots \\
+0 & \text{ otherwise}
+\end{cases}" data-equation="eq:pmf_function">
+	<img src="https://cdn.rawgit.com/distributions-io/poisson-pmf/11baf7b5bedf71f21dd14c8ff67d0b1c45912234/docs/img/eqn.svg" alt="Probability mass function (PMF) for a Poisson distribution.">
 	<br>
 </div>
 
@@ -16,7 +18,7 @@ where `lambda` is the mean parameter.
 ## Installation
 
 ``` bash
-$ npm install distributions-poisson-pdf
+$ npm install distributions-poisson-pmf
 ```
 
 For use in the browser, use [browserify](https://github.com/substack/node-browserify).
@@ -25,10 +27,10 @@ For use in the browser, use [browserify](https://github.com/substack/node-browse
 ## Usage
 
 ``` javascript
-var pdf = require( 'distributions-poisson-pdf' );
+var pmf = require( 'distributions-poisson-pmf' );
 ```
 
-#### pdf( x[, options] )
+#### pmf( x[, options] )
 
 Evaluates the [probability mass function](https://en.wikipedia.org/wiki/Probability_mass_function) (PMF) for the [Poisson](https://en.wikipedia.org/wiki/Poisson_distribution) distribution. `x` may be either a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix).
 
@@ -39,21 +41,21 @@ var matrix = require( 'dstructs-matrix' ),
 	x,
 	i;
 
-out = pdf( 1 );
+out = pmf( 1 );
 // returns ~0.368
 
-out = pdf( -1 );
+out = pmf( -1 );
 // returns 0
 
-out = pdf( 0.5 );
+out = pmf( 0.5 );
 // returns 0
 
 x = [ 0, 1, 2, 3, 4, 5 ];
-out = pdf( x );
+out = pmf( x );
 // returns [ ~0.368, ~0.368, ~0.184, ~0.0613, ~0.0153, ~0.00307 ]
 
 x = new Int8Array( x );
-out = pdf( x );
+out = pmf( x );
 // returns Float64Array( [...] )
 
 x = new Int16Array( 6 );
@@ -67,9 +69,9 @@ mat = matrix( x, [3,2], 'int16' );
 	  4  5 ]
 */
 
-out = pdf( mat );
+out = pmf( mat );
 /*
-	[ ~0.368 ~0.368 
+	[ ~0.368 ~0.368
 	  ~0.184 ~0.0613
 	  ~0.0153 ~0.00307 ]
 */
@@ -89,7 +91,7 @@ A [Poisson](https://en.wikipedia.org/wiki/Poisson_distribution) distribution is 
 ``` javascript
 var x = [ 0, 1, 2, 3, 4, 5 ];
 
-var out = pdf( x, {
+var out = pmf( x, {
 	'lambda': 5,
 });
 // returns [ ~0.00674, ~0.0337, ~0.0842, ~0.14, ~0.175, ~0.175 ]
@@ -111,7 +113,7 @@ function getValue( d, i ) {
 	return d[ 1 ];
 }
 
-var out = pdf( data, {
+var out = pmf( data, {
 	'accessor': getValue
 });
 // returns [ ~0.368, ~0.368, ~0.184, ~0.0613, ~0.0153, ~0.00307 ]
@@ -130,7 +132,7 @@ var data = [
 	{'x':[5,5]}
 ];
 
-var out = pdf( data, {
+var out = pmf( data, {
 	'path': 'x/1',
 	'sep': '/'
 });
@@ -156,13 +158,13 @@ var x, out;
 
 x = new Int8Array( [0,1,2,3,4] );
 
-out = pdf( x, {
+out = pmf( x, {
 	'dtype': 'float32'
 });
 // returns Float32Array( [~0.00674,~0.0337,~0.0842,~0.14,~0.175] )
 
 // Works for plain arrays, as well...
-out = pdf( [0,1,2,3,4], {
+out = pmf( [0,1,2,3,4], {
 	'dtype': 'float32'
 });
 // returns Float32Array( [~0.00674,~0.0337,~0.0842,~0.14,~0.175] )
@@ -179,7 +181,7 @@ var bool,
 
 x = [ 0, 1, 2, 3, 4, 5 ];
 
-out = pdf( x, {
+out = pmf( x, {
 	'copy': false
 });
 // returns [ ~0.368, ~0.368, ~0.184, ~0.0613, ~0.0153, ~0.00307 ]
@@ -198,11 +200,11 @@ mat = matrix( x, [3,2], 'int16' );
 	  4  5 ]
 */
 
-out = pdf( mat, {
+out = pmf( mat, {
 	'copy': false
 });
 /*
-	[ ~0.368 ~0.368 
+	[ ~0.368 ~0.368
 	  ~0.184 ~0.0613
 	  ~0.0153 ~0.00307 ]
 */
@@ -214,21 +216,21 @@ bool = ( mat === out );
 
 ## Notes
 
-*	If an element is __not__ a numeric value, the evaluated [PDF](https://en.wikipedia.org/wiki/Poisson_distribution) is `NaN`.
+*	If an element is __not__ a numeric value, the evaluated [PMF](https://en.wikipedia.org/wiki/Poisson_distribution) is `NaN`.
 
 	``` javascript
 	var data, out;
 
-	out = pdf( null );
+	out = pmf( null );
 	// returns NaN
 
-	out = pdf( true );
+	out = pmf( true );
 	// returns NaN
 
-	out = pdf( {'a':'b'} );
+	out = pmf( {'a':'b'} );
 	// returns NaN
 
-	out = pdf( [ true, null, [] ] );
+	out = pmf( [ true, null, [] ] );
 	// returns [ NaN, NaN, NaN ]
 
 	function getValue( d, i ) {
@@ -241,12 +243,12 @@ bool = ( mat === out );
 		{'x':null}
 	];
 
-	out = pdf( data, {
+	out = pmf( data, {
 		'accessor': getValue
 	});
 	// returns [ NaN, NaN, NaN, NaN ]
 
-	out = pdf( data, {
+	out = pmf( data, {
 		'path': 'x'
 	});
 	/*
@@ -262,7 +264,7 @@ bool = ( mat === out );
 *	Be careful when providing a data structure which contains non-numeric elements and specifying an `integer` output data type, as `NaN` values are cast to `0`.
 
 	``` javascript
-	var out = pdf( [ true, null, [] ], {
+	var out = pmf( [ true, null, [] ], {
 		'dtype': 'int8'
 	});
 	// returns Int8Array( [0,0,0] );
@@ -272,7 +274,7 @@ bool = ( mat === out );
 ## Examples
 
 ``` javascript
-var pdf = require( 'distributions-poisson-pdf' ),
+var pmf = require( 'distributions-poisson-pmf' ),
 	matrix = require( 'dstructs-matrix' );
 
 var data,
@@ -286,7 +288,7 @@ data = new Array( 10 );
 for ( i = 0; i < data.length; i++ ) {
 	data[ i ] = i * 0.5;
 }
-out = pdf( data );
+out = pmf( data );
 
 // Object arrays (accessors)...
 function getValue( d ) {
@@ -297,7 +299,7 @@ for ( i = 0; i < data.length; i++ ) {
 		'x': data[ i ]
 	};
 }
-out = pdf( data, {
+out = pmf( data, {
 	'accessor': getValue
 });
 
@@ -307,7 +309,7 @@ for ( i = 0; i < data.length; i++ ) {
 		'x': [ i, data[ i ].x ]
 	};
 }
-out = pdf( data, {
+out = pmf( data, {
 	'path': 'x/1',
 	'sep': '/'
 });
@@ -317,14 +319,14 @@ data = new Int32Array( 10 );
 for ( i = 0; i < data.length; i++ ) {
 	data[ i ] = i;
 }
-out = pdf( data );
+out = pmf( data );
 
 // Matrices...
 mat = matrix( data, [5,2], 'int32' );
-out = pdf( mat );
+out = pmf( mat );
 
 // Matrices (custom output data type)...
-out = pdf( mat, {
+out = pmf( mat, {
 	'dtype': 'uint8'
 });
 ```
@@ -375,20 +377,20 @@ $ make view-cov
 Copyright &copy; 2015. The [Compute.io](https://github.com/compute-io) Authors.
 
 
-[npm-image]: http://img.shields.io/npm/v/distributions-poisson-pdf.svg
-[npm-url]: https://npmjs.org/package/distributions-poisson-pdf
+[npm-image]: http://img.shields.io/npm/v/distributions-poisson-pmf.svg
+[npm-url]: https://npmjs.org/package/distributions-poisson-pmf
 
-[travis-image]: http://img.shields.io/travis/distributions-io/poisson-pdf/master.svg
-[travis-url]: https://travis-ci.org/distributions-io/poisson-pdf
+[travis-image]: http://img.shields.io/travis/distributions-io/poisson-pmf/master.svg
+[travis-url]: https://travis-ci.org/distributions-io/poisson-pmf
 
-[coveralls-image]: https://img.shields.io/coveralls/distributions-io/poisson-pdf/master.svg
-[coveralls-url]: https://coveralls.io/r/distributions-io/poisson-pdf?branch=master
+[coveralls-image]: https://img.shields.io/coveralls/distributions-io/poisson-pmf/master.svg
+[coveralls-url]: https://coveralls.io/r/distributions-io/poisson-pmf?branch=master
 
-[dependencies-image]: http://img.shields.io/david/distributions-io/poisson-pdf.svg
-[dependencies-url]: https://david-dm.org/distributions-io/poisson-pdf
+[dependencies-image]: http://img.shields.io/david/distributions-io/poisson-pmf.svg
+[dependencies-url]: https://david-dm.org/distributions-io/poisson-pmf
 
-[dev-dependencies-image]: http://img.shields.io/david/dev/distributions-io/poisson-pdf.svg
-[dev-dependencies-url]: https://david-dm.org/dev/distributions-io/poisson-pdf
+[dev-dependencies-image]: http://img.shields.io/david/dev/distributions-io/poisson-pmf.svg
+[dev-dependencies-url]: https://david-dm.org/dev/distributions-io/poisson-pmf
 
-[github-issues-image]: http://img.shields.io/github/issues/distributions-io/poisson-pdf.svg
-[github-issues-url]: https://github.com/distributions-io/poisson-pdf/issues
+[github-issues-image]: http://img.shields.io/github/issues/distributions-io/poisson-pmf.svg
+[github-issues-url]: https://github.com/distributions-io/poisson-pmf/issues
