@@ -1,6 +1,6 @@
 Probability Mass Function
 ===
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependencies][dependencies-image]][dependencies-url]
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][codecov-image]][codecov-url] [![Dependencies][dependencies-image]][dependencies-url]
 
 > [Poisson](https://en.wikipedia.org/wiki/Poisson_distribution) distribution probability mass function (PMF).
 
@@ -13,7 +13,7 @@ The [probability mass function](https://en.wikipedia.org/wiki/Probability_mass_f
 	<br>
 </div>
 
-where `lambda` is the mean parameter.
+where `lambda > 0` is the mean parameter.
 
 ## Installation
 
@@ -86,7 +86,7 @@ The function accepts the following `options`:
 *	__path__: [deepget](https://github.com/kgryte/utils-deep-get)/[deepset](https://github.com/kgryte/utils-deep-set) key path.
 *	__sep__: [deepget](https://github.com/kgryte/utils-deep-get)/[deepset](https://github.com/kgryte/utils-deep-set) key path separator. Default: `'.'`.
 
-A [Poisson](https://en.wikipedia.org/wiki/Poisson_distribution) distribution is a function of 1 parameter(s): `lambda`(mean parameter). By default, `lambda` is equal to `1`. To adjust either parameter, set the corresponding option(s).
+A [Poisson](https://en.wikipedia.org/wiki/Poisson_distribution) distribution is a function of one parameter: `lambda > 0`(mean parameter). By default, `lambda` is equal to `1`. To adjust it, set the corresponding option.
 
 ``` javascript
 var x = [ 0, 1, 2, 3, 4, 5 ];
@@ -383,8 +383,8 @@ Copyright &copy; 2015. The [Compute.io](https://github.com/compute-io) Authors.
 [travis-image]: http://img.shields.io/travis/distributions-io/poisson-pmf/master.svg
 [travis-url]: https://travis-ci.org/distributions-io/poisson-pmf
 
-[coveralls-image]: https://img.shields.io/coveralls/distributions-io/poisson-pmf/master.svg
-[coveralls-url]: https://coveralls.io/r/distributions-io/poisson-pmf?branch=master
+[codecov-image]: https://img.shields.io/codecov/c/github/distributions-io/poisson-pmf/master.svg
+[codecov-url]: https://codecov.io/github/distributions-io/poisson-pmf?branch=master
 
 [dependencies-image]: http://img.shields.io/david/distributions-io/poisson-pmf.svg
 [dependencies-url]: https://david-dm.org/distributions-io/poisson-pmf
