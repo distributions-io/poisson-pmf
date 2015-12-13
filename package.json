@@ -1,6 +1,6 @@
 {
   "name": "distributions-poisson-pmf",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Poisson distribution probability mass function (PMF)",
   "author": {
     "name": "Philipp Burckhardt",
