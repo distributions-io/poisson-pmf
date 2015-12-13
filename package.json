@@ -25,10 +25,14 @@
   "keywords": [
     "distributions.io",
     "distributions",
+    "distribution",
     "probability",
     "statistics",
     "stats",
-    "pdf"
+    "pmf",
+    "mass function",
+    "discrete",
+    "counts"
   ],
   "bugs": {
     "url": "https://github.com/distributions-io/poisson-pmf/issues"
@@ -54,10 +58,11 @@
   },
   "devDependencies": {
     "chai": "3.x.x",
-    "mocha": "2.x.x",
+    "codecov": "^1.0.1",
     "istanbul": "^0.3.0",
     "jshint": "2.x.x",
-    "jshint-stylish": "2.x.x"
+    "jshint-stylish": "2.x.x",
+    "mocha": "2.x.x"
   },
   "license": "MIT"
 }
