@@ -56,7 +56,7 @@ out = pmf( x );
 
 x = new Int8Array( x );
 out = pmf( x );
-// returns Float64Array( [...] )
+// returns Float64Array( [~0.368,~0.368,~0.184,~0.0613,~0.0153,~0.00307] )
 
 x = new Int16Array( 6 );
 for ( i = 0; i < 6; i++ ) {
